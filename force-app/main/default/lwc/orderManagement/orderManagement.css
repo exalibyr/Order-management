@@ -1,0 +1,67 @@
+div .header {
+    height: 20%;
+    width: 100%;
+    top: 5%;
+    position: absolute;
+}
+div .leftHeader {
+    display: inline;
+    position: absolute;
+    width: 30%;
+    left: 10%;
+    margin-right: 10%;
+}
+div .rightHeader {
+    display: inline;
+    position: absolute;
+    width: 30%;
+    margin-left: 10%;
+    right: 10%;
+}
+div .right_block {
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    width: 60%;
+}
+div .left_block {
+    position: absolute;
+    top: 29%;
+    left: 0%;
+    width: 40%;
+}
+div .label {
+    display: inline;
+    margin: 3%;
+}
+div .button {
+    display: inline;
+    margin: 3%;
+}
+.search_input {
+    display:inline;
+    position: absolute;
+    top: 25%;
+    width: 40%;
+    left: 45%;
+}
+.search_button {
+    display: inline;
+    position: absolute;
+    left: 90%;
+    top: 29%;
+}
+.product_list_view {
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    width: 50%;
+}
+.modal {
+    position: absolute;
+    height: 60%;
+    top: 5%;
+    left: 20%;
+    width: 60%;
+    z-index: 5;
+}

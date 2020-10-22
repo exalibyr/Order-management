@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Create product" if:true={openModal}>
+        <lightning-record-form 
+            if:true={openModal}
+            object-api-name={objectApiName}
+            fields={fields}
+            onsuccess={handleProductCreated}
+            onerror={handleError}
+            oncancel={handleCanceled}>
+        </lightning-record-form>
+    </lightning-card>
+</template>

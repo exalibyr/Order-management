@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Cart" if:true={openModal}>
+        <template if:true={openModal} for:each={productsInCart} for:item="product">
+            <c-product-item 
+                key={product.product.Id} 
+                product={product.product}
+                amount={product.amount} 
+                is-cart>
+            </c-product-item>
+        </template>
+        <lightning-button 
+            class="button" 
+            slot="actions" 
+            label="Check out"
+            onclick={checkOut}>
+        </lightning-button>
+        <lightning-button 
+            class="button" 
+            slot="actions" 
+            label="Close"
+            onclick={closeCart}>
+        </lightning-button>
+    </lightning-card>
+</template>

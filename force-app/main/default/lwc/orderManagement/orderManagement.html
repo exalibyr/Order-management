@@ -1,0 +1,89 @@
+<template>
+    <div class="header">
+        <lightning-card class="header" title="Order management">
+            <div class="leftHeader" if:true={account}>
+                <lightning-formatted-text class="label slds-p-horizontal_small" value={account.Name} ></lightning-formatted-text>
+                <lightning-formatted-text class="label slds-p-horizontal_small" value={account.AccountNumber}></lightning-formatted-text>
+            </div>
+            <div class="rightHeader" if:true={user}>
+                <lightning-button 
+                    class="button"
+                    if:true={user.IsManager__c}
+                    label="Create product"
+                    onclick={createProduct}
+                    slot="actions">
+                </lightning-button>
+                <lightning-button 
+                    class="button" 
+                    slot="actions" 
+                    label="Cart"
+                    onclick={openCart}>
+                </lightning-button>
+            </div>
+        </lightning-card>
+    </div>
+    <c-cart-modal 
+        if:true={openCartModal}
+        class="modal"
+        open-modal={openCartModal}
+        onclose={handleCloseCartModal}
+        oncheckout={handleCheckout}
+        products-in-cart={productsInCart}>
+    </c-cart-modal>
+    <c-product-modal 
+        class="modal" 
+        open-modal={openProductModal} 
+        if:true={openProductModal}
+        onclose={handleCloseProductModal}>
+    </c-product-modal>
+    <div class="left_block">
+        <lightning-card title="Filter" class="left_block">
+            <lightning-checkbox-group 
+                label="By product type"
+                name="By product type"
+                class="slds-p-horizontal_small"
+                options={typeOptions}
+                value={selectedProductTypes}
+                onchange={handleTypeValuesChange}>
+            </lightning-checkbox-group>
+            <lightning-checkbox-group 
+                label="By product family"
+                name="By product family"
+                class="slds-p-horizontal_small"
+                options={familyOptions}
+                value={selectedProductFamilies}
+                onchange={handleFamilyValuesChange}>
+            </lightning-checkbox-group>
+            <lightning-button 
+                slot="actions"
+                label="Clear"
+                onclick={handleFilterClear}>
+            </lightning-button>
+        </lightning-card>
+    </div>
+    <div class="right_block">
+        <lightning-input
+            type="search"
+            onchange={handleKeyChange}
+            class="slds-m-bottom_small search_input"
+            label="Search for products"
+            placeholder="Type product name here">
+        </lightning-input>
+        <lightning-button 
+            class="search_button"
+            label="Search" 
+            onclick={handleSearch}>
+        </lightning-button>
+        <div class="product_list_view">
+            <template if:true={products}>
+                <template for:each={products} for:item="product">
+                    <c-product-item 
+                        key={product.Id} 
+                        product={product}>
+                    </c-product-item>
+                </template>
+            </template>
+        </div>
+    </div>
+        
+</template>

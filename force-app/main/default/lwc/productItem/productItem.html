@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title={product.Name} class="product_item">
+        <span class="slds-p-horizontal_small">{product.Description__c}</span>
+        <span if:true={isCart} class="slds-p-horizontal_small">Amount: {amount}</span>
+        <lightning-button 
+            slot="actions"
+            label="Details"
+            onclick={openProductDetails}>
+        </lightning-button>
+        <lightning-button 
+            if:false={isCart}
+            slot="actions"
+            label="Add"
+            onclick={addToCard}>
+        </lightning-button>
+        <lightning-button 
+            if:true={isCart}
+            slot="actions"
+            label="Remove"
+            onclick={removeFromCart}>
+        </lightning-button>
+    </lightning-card>
+</template>
